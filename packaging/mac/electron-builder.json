@@ -1,0 +1,25 @@
+{
+  "appId": "com.pastevault.app",
+  "productName": "PasteVault",
+  "asar": true,
+  "electronDist": "node_modules/electron/dist",
+  "electronLanguages": ["en-US", "zh-CN"],
+  "compression": "maximum",
+  "directories": {
+    "output": "release-mac"
+  },
+  "files": [
+    "dist-electron/**/*",
+    "dist-renderer/**/*",
+    "resources/**/*",
+    "package.json"
+  ],
+  "extraMetadata": {
+    "main": "dist-electron/main/main.js"
+  },
+  "mac": {
+    "category": "public.app-category.productivity",
+    "target": ["zip"],
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}"
+  }
+}

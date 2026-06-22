@@ -1,0 +1,10 @@
+{
+  "name": "pastevault-mac-packaging",
+  "version": "0.1.5",
+  "private": true,
+  "description": "Separate macOS packaging configuration for PasteVault.",
+  "scripts": {
+    "dist:mac:zip": "cd ../.. && npm run build && npx electron-builder --config packaging/mac/electron-builder.json --mac zip",
+    "dist:mac:dmg": "cd ../.. && npm run build && npx electron-builder --config packaging/mac/electron-builder.json --mac dmg"
+  }
+}

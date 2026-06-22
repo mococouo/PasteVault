@@ -1,0 +1,98 @@
+{
+  "name": "pastevault",
+  "version": "0.1.5",
+  "private": false,
+  "description": "Local encrypted vault for collecting and organizing copied notes, TXT files, URLs, accounts, and API keys.",
+  "author": "mococouo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mococouo/PasteVault.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mococouo/PasteVault/issues"
+  },
+  "homepage": "https://github.com/mococouo/PasteVault#readme",
+  "main": "dist-electron/main/main.js",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "dev:desktop": "npm run build:electron && electron .",
+    "build": "npm run build:electron && vite build",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "pack": "npm run build && electron-builder --dir",
+    "dist:win": "npm run build && electron-builder --win zip portable",
+    "dist:win:portable": "npm run build && electron-builder --win portable",
+    "dist:win:zip": "npm run build && electron-builder --win zip",
+    "dist:win:installer": "npm run build && electron-builder --win nsis",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.electron.json --noEmit"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "read-excel-file": "^9.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.4.1",
+    "electron": "^42.4.1",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.8"
+  },
+  "build": {
+    "appId": "com.pastevault.app",
+    "productName": "PasteVault",
+    "asar": true,
+    "electronDist": "node_modules/electron/dist",
+    "electronLanguages": [
+      "en-US",
+      "zh-CN"
+    ],
+    "compression": "maximum",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist-electron/**/*",
+      "dist-renderer/**/*",
+      "resources/**/*",
+      "package.json"
+    ],
+    "extraMetadata": {
+      "main": "dist-electron/main/main.js"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "zip",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-${version}-folder-${os}-${arch}.${ext}"
+    },
+    "portable": {
+      "artifactName": "${productName}-${version}-portable-${os}-${arch}.${ext}"
+    },
+    "nsis": {
+      "artifactName": "${productName}-${version}-setup-${os}-${arch}.${ext}",
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
