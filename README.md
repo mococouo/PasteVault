@@ -4,6 +4,8 @@ PasteVault is a local encrypted desktop vault for collecting copied notes, TXT/M
 
 The app is built around a simple workflow: collect messy desktop text files, extract useful content, classify it, and search it later. Vault data stays on the local machine and is encrypted with scrypt plus AES-256-GCM.
 
+> Built with AI coding models. Designed from real workflow problems.
+
 ## Features
 
 - Local encrypted vault storage
@@ -15,7 +17,7 @@ The app is built around a simple workflow: collect messy desktop text files, ext
 
 ## Download
 
-Windows builds are published from GitHub Releases.
+Windows builds are published from [GitHub Releases](https://github.com/mococouo/PasteVault/releases).
 
 macOS packaging is kept separate under `packaging/mac/` because macOS app signing and final packaging should be done on macOS.
 
